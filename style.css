@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000; /* Set a background color if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#game-container {
+  position: relative;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Style for the score, lives, and level display */
+#score-display, #lives-display, #level-display {
+  position: absolute;
+  color: #fff;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+}
+
+#score-display {
+  top: 10px;
+  left: 10px;
+}
+
+#lives-display {
+  top: 40px;
+  left: 10px;
+}
+
+#level-display {
+  top: 70px;
+  left: 10px;
+}
