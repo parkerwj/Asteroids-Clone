@@ -1,12 +1,12 @@
-const SCREEN_WIDTH = 800;
-const SCREEN_HEIGHT = 600;
+const SCREEN_WIDTH = window.innerWidth;
+const SCREEN_HEIGHT = window.innerHeight;
 const MOVEMENT_SPEED = 80;
 const BULLET_SPEED = 300; // Increased laser speed
 
 const gameConfig = {
   type: Phaser.AUTO,
-  width: SCREEN_WIDTH,
-  height: SCREEN_HEIGHT,
+  width: window.innerWidth,
+  height: window.innerHeight,
   physics: {
     default: 'arcade',
     arcade: {
@@ -19,7 +19,6 @@ const gameConfig = {
     update: update,
   },
 };
-
 const game = new Phaser.Game(gameConfig);
 
 function preload() {
@@ -127,6 +126,9 @@ function create() {
   });
 
   newGame();
+  window.addEventListener('resize', () => {
+    game.scale.resize(window.innerWidth, window.innerHeight);
+  });
 }
 
 function update() {
@@ -155,17 +157,18 @@ function update() {
   levelText.setText(`Level: ${level}`);
   scoreText.setText(`Score: ${score}`);
 
+  game.scale.resize(window.innerWidth, window.innerHeight);
 
   rocks.children.iterate((rock) => {
     if (rock.x < -rock.width / 2) {
-      rock.x = SCREEN_WIDTH + rock.width / 2;
-    } else if (rock.x > SCREEN_WIDTH + rock.width / 2) {
+      rock.x = window.innerWidth + rock.width / 2;
+    } else if (rock.x > window.innerWidth + rock.width / 2) {
       rock.x = -rock.width / 2;
     }
 
     if (rock.y < -rock.height / 2) {
-      rock.y = SCREEN_HEIGHT + rock.height / 2;
-    } else if (rock.y > SCREEN_HEIGHT + rock.height / 2) {
+      rock.y = window.innerHeight + rock.height / 2;
+    } else if (rock.y > window.innerHeight + rock.height / 2) {
       rock.y = -rock.height / 2;
     }
   });
@@ -211,8 +214,8 @@ function bulletHitRock(bullet, rock) {
 
 function spawnRocks() {
   for (let i = 0; i < level * 5; i++) {
-    let x = Phaser.Math.Between(0, SCREEN_WIDTH);
-    let y = Phaser.Math.Between(0, SCREEN_HEIGHT);
+    let x = Phaser.Math.Between(0, window.innerWidth);
+    let y = Phaser.Math.Between(0, window.innerHeight);
     let velocityX = Phaser.Math.Between(-level - 1, level + 1) * MOVEMENT_SPEED;
     let velocityY = Phaser.Math.Between(-level - 1, level + 1) * MOVEMENT_SPEED;
     let radius = Phaser.Math.Between(
