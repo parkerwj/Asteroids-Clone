@@ -217,7 +217,7 @@ function bulletHitRock(bullet, rock) {
 }
 
 function spawnRocks() {
-  const baseMinDistance = 200; // Base minimum distance between ship and new rocks
+  const baseMinDistance = 250; // Base minimum distance between ship and new rocks
   const distanceIncreasePerLevel = 25; // Distance increase per level
 
   const minDistance = baseMinDistance + (level - 1) * distanceIncreasePerLevel;
@@ -232,7 +232,7 @@ function spawnRocks() {
 
     let velocityX = Phaser.Math.Between(-level - 1, level + 1) * MOVEMENT_SPEED;
     let velocityY = Phaser.Math.Between(-level - 1, level + 1) * MOVEMENT_SPEED;
-    let radius = Phaser.Math.Between(10 + (level - 1) * 5, 50 + (level - 1) * 5);
+    let radius = Phaser.Math.Between(10 + (level - 1) * 4, 50 + (level - 1) * 4);
     let rock = rocks.create(x, y, 'asteroid');
     rock.setScale(radius / 100);
     rock.setVelocity(velocityX, velocityY);
