@@ -95,7 +95,9 @@ function create() {
   restartText.setOrigin(0.5, 0.5);
   restartText.visible = false; // Initially hidden
 
-  this.add.image(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 'background');
+  this.background = this.add.image(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 'background');
+  this.background.displayWidth = SCREEN_WIDTH;
+  this.background.displayHeight = SCREEN_HEIGHT;
 
   ship = this.physics.add.sprite(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 'ship');
   ship.setCollideWorldBounds(true);
@@ -172,6 +174,8 @@ function update() {
       rock.y = -rock.height / 2;
     }
   });
+  this.background.displayWidth = SCREEN_WIDTH;
+  this.background.displayHeight = SCREEN_HEIGHT;
 }
 
 function shootBullet() {

@@ -6,7 +6,7 @@ import math
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 MOVEMENT_SPEED = 5
-BULLET_SPEED = 8
+BULLET_SPEED = 5
 NUM_ROCKS = 5
 MIN_ROCK_RADIUS = 10
 MAX_ROCK_RADIUS = 50
@@ -22,7 +22,7 @@ ROCK_NUMBER_INCREMENT = 2
 
 class Ship(arcade.Sprite):
     def __init__(self):
-        super().__init__("images/baby.png", center_x=SCREEN_WIDTH/2, center_y=SCREEN_HEIGHT/2)
+        super().__init__("images/luigi.png", center_x=SCREEN_WIDTH/2, center_y=SCREEN_HEIGHT/2)
         self.angle = 0
         self.lives = STARTING_LIVES
         self.change_angle = 0
@@ -50,8 +50,8 @@ class Bullet(arcade.Sprite):
         self.center_y = y
         self.velocity_x = -BULLET_SPEED * math.sin(math.radians(angle))
         self.velocity_y = BULLET_SPEED * math.cos(math.radians(angle))
-        self.width = 20
-        self.height = 20
+        self.width = 25
+        self.height = 25
 
     def update(self):
         self.center_x += self.velocity_x
